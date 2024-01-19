@@ -23,6 +23,8 @@ repositories {
 }
 
 dependencies {
+    implementation 'io.fusionauth:java-http:0.2.10'
+
     testImplementation(platform('org.junit:junit-bom:5.10.1'))
     testImplementation('org.junit.jupiter:junit-jupiter')
     testImplementation 'org.hamcrest:hamcrest-all:1.3'

@@ -6,7 +6,7 @@ plugins {
 
 version = '1.0.0'
 
-description = """TddSkeleton"""
+description = """extreme_startup_player"""
 
 java {
     toolchain {

@@ -5,9 +5,10 @@ import io.fusionauth.http.server.HTTPListenerConfiguration;
 import io.fusionauth.http.server.HTTPServer;
 
 import java.io.Writer;
-import java.net.*;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 
 public class ExtremeStartupHttpServer {
     private final HTTPServer server;
@@ -27,7 +28,7 @@ public class ExtremeStartupHttpServer {
 
     public ExtremeStartupHttpServer(int port) {
         HTTPHandler handler = (req, res) -> {
-            String queryString = URLDecoder.decode(req.getQueryString(), UTF_8);
+            String queryString = req.getQueryString();
             System.out.println("queryString = " + queryString);
             try (Writer writer = res.getWriter()) {
                 writer.write("42");
@@ -44,3 +45,4 @@ public class ExtremeStartupHttpServer {
         server.close();
     }
 }
+

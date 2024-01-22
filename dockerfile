@@ -1,4 +1,4 @@
-FROM amazoncorretto:21
+FROM openjdk:21-jdk-slim
 RUN mkdir /code
 COPY . /code/
 WORKDIR /code

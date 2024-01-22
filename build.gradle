@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
     id 'jacoco'
     id 'info.solidsoft.pitest' version '1.15.0'
 }
@@ -7,6 +8,18 @@ plugins {
 version = '1.0.0'
 
 description = """extreme_startup_player"""
+
+mainClassName = 'com.oocode.ExtremeStartupHttpServer'
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes "Main-Class": mainClassName
+    }
+    archiveBaseName = 'extreme_startup_player-fat-jar'
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
 
 java {
     toolchain {

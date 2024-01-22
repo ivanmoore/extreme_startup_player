@@ -41,3 +41,11 @@ docker run extreme_startup_player
 ```bash
 docker container prune -f
 ```
+
+### CI/CD
+
+from: https://fly.io/docs/app-guides/continuous-deployment-with-github-actions/
+
+```bash
+fly tokens create deploy -x 999999h
+```

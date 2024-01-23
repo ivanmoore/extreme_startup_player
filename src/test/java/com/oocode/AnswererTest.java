@@ -7,7 +7,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class AnswererTest {
     @Test
-    public void canAnswerMyName() throws Exception {
+    public void canAnswerMyName() {
         var contents = new Answerer().answerFor("What is your name?");
 
         assertThat(contents, equalTo("Someone"));

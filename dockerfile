@@ -1,7 +1,7 @@
-FROM openjdk:21-jdk-slim
+FROM gradle:8.5-jdk21-jammy
 RUN mkdir /code
 COPY . /code/
 WORKDIR /code
-RUN ./gradlew clean build fatJar
+RUN gradle clean build fatJar
 EXPOSE 8123
 CMD java -jar build/libs/extreme_startup_player-fat-jar-1.0.0.jar

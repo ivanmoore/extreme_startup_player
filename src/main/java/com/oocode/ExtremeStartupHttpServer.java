@@ -37,7 +37,7 @@ public class ExtremeStartupHttpServer {
                 String value = QueryDecoder.decode(queryEncoded);
                 System.out.println("value = " + value);
                 try (Writer writer = res.getWriter()) {
-                    writer.write("Someone");
+                    writer.write(new Answerer().answerFor(value));
                 }
             }
         };

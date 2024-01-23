@@ -3,15 +3,12 @@ package com.oocode;
 import io.fusionauth.http.server.HTTPHandler;
 import io.fusionauth.http.server.HTTPListenerConfiguration;
 import io.fusionauth.http.server.HTTPServer;
-import org.apache.http.client.utils.URLEncodedUtils;
 
 import java.io.Writer;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class ExtremeStartupHttpServer {
     private final HTTPServer server;
@@ -31,7 +28,7 @@ public class ExtremeStartupHttpServer {
 
     public ExtremeStartupHttpServer(int port) {
         HTTPHandler handler = (req, res) -> {
-            String value = URLEncodedUtils.parse(req.getParameter("q"), UTF_8).getFirst().getName();
+            String value = QueryDecoder.decode(req.getParameter("q"));
             System.out.println("value = " + value);
             try (Writer writer = res.getWriter()) {
                 writer.write("Someone");

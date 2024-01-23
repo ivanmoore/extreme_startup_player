@@ -37,7 +37,6 @@ repositories {
 
 dependencies {
     implementation 'io.fusionauth:java-http:0.2.10'
-    implementation 'org.apache.httpcomponents:httpclient:4.5.14'
 
     testImplementation(platform('org.junit:junit-bom:5.10.1'))
     testImplementation('org.junit.jupiter:junit-jupiter')

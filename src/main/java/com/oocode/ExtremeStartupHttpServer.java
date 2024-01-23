@@ -28,10 +28,17 @@ public class ExtremeStartupHttpServer {
 
     public ExtremeStartupHttpServer(int port) {
         HTTPHandler handler = (req, res) -> {
-            String value = QueryDecoder.decode(req.getParameter("q"));
-            System.out.println("value = " + value);
-            try (Writer writer = res.getWriter()) {
-                writer.write("Someone");
+            String queryEncoded = req.getParameter("q");
+            if (queryEncoded == null) {
+                try (Writer writer = res.getWriter()) {
+                    writer.write(HomePage.HTML);
+                }
+            } else {
+                String value = QueryDecoder.decode(queryEncoded);
+                System.out.println("value = " + value);
+                try (Writer writer = res.getWriter()) {
+                    writer.write("Someone");
+                }
             }
         };
         server = new HTTPServer().withHandler(handler).withListener(new HTTPListenerConfiguration(port));

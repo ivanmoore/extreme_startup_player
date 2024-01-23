@@ -9,6 +9,7 @@ import java.net.URLEncoder;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 
 public class ExtremeStartupHttpServerTest {
     private ExtremeStartupHttpServer server;
@@ -18,6 +19,13 @@ public class ExtremeStartupHttpServerTest {
         var contents = new SimpleHttpClient().readUrl("http://127.0.0.1:9123?q=" + URLEncoder.encode("What+is+your+name%3F", UTF_8));
 
         assertThat(contents, equalTo("Someone"));
+    }
+
+    @Test
+    public void showsHomePageIfMissingQueryString() throws Exception {
+        var contents = new SimpleHttpClient().readUrl("http://127.0.0.1:9123");
+
+        assertThat(contents, containsString("<html>"));
     }
 
     @BeforeEach

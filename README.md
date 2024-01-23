@@ -24,6 +24,12 @@ fly launch
 fly deploy
 ```
 
+### debug running app
+
+```bash
+fly logs
+```
+
 ### build docker image
 
 ```bash

@@ -4,9 +4,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.net.URLEncoder;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
@@ -16,7 +13,7 @@ public class ExtremeStartupHttpServerTest {
 
     @Test
     public void canAnswerSimpleAddition() throws Exception {
-        var contents = new SimpleHttpClient().readUrl("http://127.0.0.1:9123?q=" + URLEncoder.encode("What+is+your+name%3F", UTF_8));
+        var contents = new SimpleHttpClient().readUrl("http://127.0.0.1:9123?q=What+is+your+name%3F");
 
         assertThat(contents, equalTo("Someone"));
     }

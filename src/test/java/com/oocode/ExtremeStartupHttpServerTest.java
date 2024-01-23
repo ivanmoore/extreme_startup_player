@@ -15,9 +15,9 @@ public class ExtremeStartupHttpServerTest {
 
     @Test
     public void canAnswerSimpleAddition() throws Exception {
-        var contents = new SimpleHttpClient().readUrl("http://127.0.0.1:9123?q=" + URLEncoder.encode("what is the sum of 34 and 8", UTF_8));
+        var contents = new SimpleHttpClient().readUrl("http://127.0.0.1:9123?q=" + URLEncoder.encode("What+is+your+name%3F", UTF_8));
 
-        assertThat(contents, equalTo("42"));
+        assertThat(contents, equalTo("Someone"));
     }
 
     @BeforeEach

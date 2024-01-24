@@ -39,8 +39,10 @@ docker build -t extreme_startup_player .
 ### run docker container based on that image
 
 ```bash
-docker run extreme_startup_player
+docker run -p 8123:8123 extreme_startup_player
 ```
+
+Then view http://localhost:8123/
 
 ### cleanup
 

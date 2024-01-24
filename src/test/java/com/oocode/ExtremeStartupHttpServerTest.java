@@ -26,13 +26,13 @@ public class ExtremeStartupHttpServerTest {
     }
 
     @BeforeEach
-    public void startLocalServerPretendingToBeExternalDependency() {
+    public void startLocalServer() {
         server = new ExtremeStartupHttpServer(9123);
         server.start();
     }
 
     @AfterEach
-    public void stopLocalServerPretendingToBeNationalGridEso() {
+    public void stopLocalServer() {
         server.stop();
     }
 }
